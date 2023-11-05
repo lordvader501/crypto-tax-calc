@@ -1,36 +1,27 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# crypto tax calculator
+production link : https://crypto-tax-calc.vercel.app/
 
 ## Getting Started
+clone the repo `git clone https://github.com/lordvader501/crypto-tax-calc.git`
 
-First, run the development server:
+install dependencies `npm i`
 
+run the development server:
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## screen shots
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+![image](https://github.com/lordvader501/crypto-tax-calc/assets/60027612/f11a6688-31ea-4af1-bd07-b0ed27847160)
 
-## Learn More
+![image](https://github.com/lordvader501/crypto-tax-calc/assets/60027612/f58f3bce-d6a8-4a0a-8bf5-d30d2da27bee)
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+![image](https://github.com/lordvader501/crypto-tax-calc/assets/60027612/c92ee34b-5415-4f71-b9bf-949186de3bcc)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+![image](https://github.com/lordvader501/crypto-tax-calc/assets/60027612/0c099420-6528-41a5-9880-591392383cb6)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
