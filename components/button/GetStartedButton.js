@@ -24,16 +24,16 @@ function GetStartedButton({ className, title }) {
         <path
           d="M13.9585 5.9952L1.4585 5.9952"
           stroke="#0F1629"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
         <path
           d="M8.91699 0.974793L13.9587 5.99479L8.91699 11.0156"
           stroke="#0F1629"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </svg>
     </Button>

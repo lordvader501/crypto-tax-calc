@@ -70,29 +70,33 @@ function FaqSection() {
             <div key={index} className="flex flex-col mt-8">
               <p className="text-darkblue text-base font-bold">{table.title}</p>
               <table className="mt-2 w-full border border-solid border-black max-w-[606px]">
-                <tr className="border border-solid border-black">
-                  {table.header.map((item, index) => (
-                    <th
-                      key={index}
-                      className="border border-solid border-black px-7 py-3.5"
-                    >
-                      {item}
-                    </th>
-                  ))}
-                </tr>
-                {table.details.map((item, index) => (
-                  <tr
-                    key={index}
-                    className="text-center border border-solid border-black"
-                  >
-                    <td className="border border-solid border-black px-7 py-3.5">
-                      {item.income}
-                    </td>
-                    <td className="border border-solid border-black px-7 py-3.5">
-                      {item.taxrate}
-                    </td>
+                <thead>
+                  <tr className="border border-solid border-black">
+                    {table.header.map((item, index) => (
+                      <th
+                        key={index}
+                        className="border border-solid border-black px-7 py-3.5"
+                      >
+                        {item}
+                      </th>
+                    ))}
                   </tr>
-                ))}
+                </thead>
+                <tbody>
+                  {table.details.map((item, index) => (
+                    <tr
+                      key={index}
+                      className="text-center border border-solid border-black"
+                    >
+                      <td className="border border-solid border-black px-7 py-3.5">
+                        {item.income}
+                      </td>
+                      <td className="border border-solid border-black px-7 py-3.5">
+                        {item.taxrate}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
               </table>
             </div>
           ))}
@@ -110,9 +114,9 @@ function FaqSection() {
               <p className="text-grey font-bold text-base mt-5">
                 Note:
                 {detail.note.map((item, index) => (
-                  <p key={index} className="text-grey text-base mt-2">
+                  <span key={index} className="text-grey text-base mt-2">
                     {item}
-                  </p>
+                  </span>
                 ))}
               </p>
               {detail.about.map((item, index) => (

@@ -18,11 +18,18 @@ function CryptoTaxCalcSection() {
     isShortTerm: false,
   });
   const [selectIncome, setSelectIncome] = useState("");
-
+  const countries = [
+    { name: "Australia", logo: "https://flagcdn.com/au.svg", currency: "$" },
+    { name: "India", logo: "https://flagcdn.com/in.svg", currency: "₹" },
+  ];
+  const countriesCurr = {
+    Australia: "$",
+    India: "₹",
+  };
+  const [selectedCountry, setSelectedCountry] = useState(null);
   useEffect(() => {
     setCapitalGain(salePrice - purchasePrice - expenses);
   }, [purchasePrice, salePrice, expenses]);
-
   return (
     <div className="flex flex-col items-center justify-center bg-white lg:max-w-[881px] lg:min-w-[680px] w-full lg:pt-px35 lg:px-px76 lg:pb-px58 p-px17 rounded-2xl">
       <h1 className="text-center font-bold md:text-4xl text-2xl text-darkblue mb-10">
@@ -30,7 +37,10 @@ function CryptoTaxCalcSection() {
       </h1>
       <div className="flex justify-between w-full md:pb-7 pb-px25 border-b solid border-[rgba(201,207,221,0.60)]">
         <SelectFinancialYearItem />
-        <SelectCountryItem />
+        <SelectCountryItem
+          countries={countries}
+          setCountry={setSelectedCountry}
+        />
       </div>
       <div className="flex w-full flex-col md:gap-y-7 md:pt-7 pt-px25 gap-y-5">
         <div className="flex md:flex-row flex-col justify-between w-full gap-y-2">
@@ -38,11 +48,13 @@ function CryptoTaxCalcSection() {
             label="Enter purchase price of Crypto"
             placeholder="Purchase price"
             setItem={setPurchasePrice}
+            selectedCountry={selectedCountry}
           />
           <InputItem
             label="Enter sale price of Crypto"
             placeholder="Sale Price"
             setItem={setSalePrice}
+            selectedCountry={selectedCountry}
           />
         </div>
         <div className="flex md:flex-row flex-col justify-between w-full gap-y-2">
@@ -50,6 +62,7 @@ function CryptoTaxCalcSection() {
             label="Enter your Expenses"
             placeholder="Expences"
             setItem={setExpenses}
+            selectedCountry={selectedCountry}
           />
           <div className="flex-col flex items-start w-full md:w-[48%]">
             <label className="text-px15 text-darkblue mb-2">
@@ -71,12 +84,20 @@ function CryptoTaxCalcSection() {
           </div>
         </div>
         <div className="flex md:flex-row flex-col justify-between w-full gap-y-2">
-          <SelectIncomeItem setSelectIncome={setSelectIncome} />
+          <SelectIncomeItem
+            setSelectIncome={setSelectIncome}
+            selectedCountry={selectedCountry}
+          />
           <div className="md:flex-col flex items-start md:justify-end w-full md:w-[48%]">
             <p className="text-sm text-grey">
               Tax Rate<span className="md:hidden">:&nbsp;</span>
             </p>
-            <p className="text-sm text-grey">{taxrate[selectIncome]}</p>
+            <p className="text-sm text-grey">
+              {taxrate[selectIncome]?.replaceAll(
+                "$",
+                countriesCurr[selectedCountry] || "$"
+              )}
+            </p>
           </div>
         </div>
         {selectTerm.isLongTerm && (
@@ -86,10 +107,12 @@ function CryptoTaxCalcSection() {
               placeholder="Capital gains amount"
               value={capitalGain}
               readOnly
+              selectedCountry={selectedCountry}
             />
             <InputItem
               label="Discount for long term gains"
               placeholder="Discount"
+              selectedCountry={selectedCountry}
               value={
                 selectTerm.isLongTerm && capitalGain >= 0
                   ? capitalGain * 0.5
@@ -118,7 +141,7 @@ function CryptoTaxCalcSection() {
                 "text-[#F44336]": capitalGain < 0,
               })}
             >
-              {capitalGain < 0 && "-"}${" "}
+              {countriesCurr[selectedCountry] || "$"} {capitalGain < 0 && "-"}{" "}
               {selectTerm.isLongTerm
                 ? capitalGain >= 0
                   ? capitalGain - capitalGain * 0.5
@@ -131,7 +154,7 @@ function CryptoTaxCalcSection() {
               The tax you need to pay*
             </p>
             <p className="text-center font-bold text-2xl text-[#0141CF]">
-              ${" "}
+              {countriesCurr[selectedCountry] || "$"}{" "}
               {selectIncome === 0
                 ? "0"
                 : selectTerm.isLongTerm

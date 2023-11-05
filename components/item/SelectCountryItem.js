@@ -2,8 +2,7 @@
 import { Avatar, Select, SelectItem } from "@nextui-org/react";
 import React from "react";
 
-function SelectCountryItem() {
-  const countries = [{ name: "Australia", logo: "https://flagcdn.com/au.svg" }];
+function SelectCountryItem({ countries, setCountry }) {
   return (
     <div className=" relative md:flex-row flex-col items-start flex md:items-center w-[48%] gap-y-1">
       <span className="whitespace-nowrap pr-2 text-px15 text-darkblue">
@@ -33,6 +32,7 @@ function SelectCountryItem() {
             </div>
           ));
         }}
+        onChange={(e) => setCountry(e.target.value)}
       >
         {(country) => (
           <SelectItem
