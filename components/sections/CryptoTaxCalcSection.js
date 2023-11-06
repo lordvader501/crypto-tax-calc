@@ -30,6 +30,7 @@ function CryptoTaxCalcSection() {
   useEffect(() => {
     setCapitalGain(salePrice - purchasePrice - expenses);
   }, [purchasePrice, salePrice, expenses]);
+  console.log(selectIncome);
   return (
     <div className="flex flex-col items-center justify-center bg-white lg:max-w-[881px] lg:min-w-[680px] w-full lg:pt-px35 lg:px-px76 lg:pb-px58 p-px17 rounded-2xl">
       <h1 className="text-center font-bold md:text-4xl text-2xl text-darkblue mb-10">
@@ -155,21 +156,21 @@ function CryptoTaxCalcSection() {
             </p>
             <p className="text-center font-bold text-2xl text-[#0141CF]">
               {countriesCurr[selectedCountry] || "$"}{" "}
-              {selectIncome === 0
+              {+selectIncome === 0
                 ? "0"
                 : selectTerm.isLongTerm
-                ? selectIncome === 1
+                ? +selectIncome === 1
                   ? 0.19 * capitalGain * 0.5
-                  : selectIncome === 2
+                  : +selectIncome === 2
                   ? 0.325 * capitalGain * 0.5
-                  : selectIncome === 3
+                  : +selectIncome === 3
                   ? 0.37 * capitalGain * 0.5
                   : 0.45 * capitalGain * 0.5
-                : selectIncome === 1
+                : +selectIncome === 1
                 ? 0.19 * capitalGain
-                : selectIncome === 2
+                : +selectIncome === 2
                 ? 0.325 * capitalGain
-                : selectIncome === 3
+                : +selectIncome === 3
                 ? 0.37 * capitalGain
                 : 0.45 * capitalGain}
             </p>
